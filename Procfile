@@ -1,1 +1,1 @@
-web: gunicorn main:fastfacts
+web: gunicorn main:app
