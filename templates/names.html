@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} Names {% endblock %}
+
+{% block content %}
+<br>
+<h2>Names</h2>
+<p>Names in politics I should know.</p>
+<div id="inner">
+    {% for i in range(tables|length) %}
+    <h5>{{titles[i]}}</h5>
+    {{tables[i] | safe}}
+    {% endfor %}
+<!--    </div>-->
+</div>
+
+
+{% endblock %}

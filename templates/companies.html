@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Companies {% endblock %}
+
+
+{% block content %}
+<br>
+<h2>Companies</h2>
+<p>Stuff about companies to know</p>
+<div id="inner">
+    <select class="form-select" aria-label="The Big Five" style="width:50%"
+            onchange="update5(event, {{tables}})" id="big_five">
+        <option selected disabled hidden>The Big Five</option>
+        {% for i in range(tables|length) %}
+        <option class="dropdown-item" value={{i}}>
+            {{big_five[i]}}
+        </option>
+        {% endfor %}
+    </select>
+    <br>
+    <div id="display"></div>
+
+    <!--    {% for i in range(tables|length) %}-->
+    <!--    {{tables[i][1] | safe}}-->
+    <!--    {% endfor %}-->
+</div>
+
+{% endblock %}
