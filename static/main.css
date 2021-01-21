@@ -28,11 +28,11 @@ table.dataframe, .dataframe th, .dataframe td {
   text-align:left;
   padding: 5px 10px;
   margin-bottom: 40px;
-  margin-left: 2em;
+  margin-left: 0em;
   font-size: 1em;
 }
 
-#text {
+#text, .table-text {
   margin: 0;
   padding-bottom: .2em;
 }

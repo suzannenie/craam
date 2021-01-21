@@ -3,19 +3,12 @@
 
 {% block content %}
 <br>
-<h2>Get learned</h2>
-<p>Home page: A collection of basic knowledge. A wikipedia cheat sheet.</p>
-
-<div id="inner">
-    {% for line in texts %}
-    <p id="text">{{line}}</p>
-    {% endfor %}
-
-    <br>
-    {% for i in range(tables|length) %}
-        <h5>{{titles[i]}}</h5>
-        {{tables[i] | safe}}
-    {% endfor %}
+<div style="text-align:center">
+    <h2>Craam</h2>
+    Cram quickly with this collection of basic knowledge. A wikipedia
+    cheat sheet.<br>
+    When navigating to different pages, please be patient as info is
+    scraped and loaded from the web.
 </div>
 
 

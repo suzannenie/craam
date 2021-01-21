@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% block title %} Math {% endblock %}
+
+{% block scripts %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+{% endblock %}
+
+{% block content %}
+<br>
+<h2>Math</h2>
+<p>Formulas, equations, time complexities, conversions.</p> <br>
+<div id="inner">
+    <select class="form-select" aria-label="Math" style="width:50%"
+            onchange="updateMathPage()" id="math_select">
+        <option class="dropdown-item" value="stats"selected>Stats
+            Formulas</option>
+        <option class="dropdown-item" value="conversions">Conversions</option>
+    </select>
+    <br>
+    <div id="stats">
+        <h6>Continuous Distributions</h6>
+        <table border="1" class="dataframe">
+            <thead>
+            <tr style="table-text-align: right;">
+                <th>Distribution</th>
+                <th>Probability Function</th>
+                <th>Mean</th>
+                <th>Variance</th>
+                <th>mgf</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Uniform</td>
+                <td>$$f(y) = \frac{1}{b-a} \text{ for $y\in[a,b]$}\\$$</td>
+                <td>$$\frac{a+b}{2}$$</td>
+                <td>$$\frac{(b-a)^2}{2}$$</td>
+                <td>$$\frac{e^{tb} - e^{ta}}{t(b-a)}$$</td>
+            </tr>
+            <tr>
+                <td>Normal</td>
+                <td>$$f(y) = \text{ for $y\in(-\infty,\infty)$}\\$$</td>
+                <td>$$\mu$$</td>
+                <td>$$\sigma^2$$</td>
+                <td>$$ $$</td>
+            </tr>
+            <tr>
+                <td>Exponential<br>$$(\alpha=1)$$</td>
+                <td>$$f(y) = \frac{1}{\beta}e^{-\frac{y}{\beta}}\text{ for
+                    $\beta \gt 0$, $y\in(0,\infty)$}\\$$
+                </td>
+                <td>$$\beta$$</td>
+                <td>$$\beta^2$$</td>
+                <td>$$(1-\beta t)^{-1}$$</td>
+            </tr>
+            <tr>
+                <td>Gamma</td>
+                <td>$$f(y) = \text{ for $y\in(0,\infty)$}\\$$</td>
+                <td>$$\alpha\beta$$</td>
+                <td>$$\alpha\beta^2$$</td>
+                <td>$$(1-\beta t)^{-\alpha}$$</td>
+            </tr>
+            <tr>
+                <td>Chi-Sq</td>
+                <td>$$f(y) = \text{ for $y^2 \gt 0$}\\$$</td>
+                <td>$$\nu$$</td>
+                <td>$$2\nu$$</td>
+                <td>$$(1-2t)^{-\nu/2}$$</td>
+            </tr>
+            <tr>
+                <td>Beta</td>
+                <td>$$f(y) = \text{ for $y^2 \gt 0$}\\$$</td>
+                <td>$$\frac{\alpha}{\alpha+\beta}$$</td>
+                <td>$$\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$$
+                </td>
+                <td>DNE in closed form</td>
+            </tr>
+            </tbody>
+        </table>
+        <h6>Discrete Distributions</h6>
+        <table border="1" class="dataframe">
+            <thead>
+            <tr style="table-text-align: right;">
+                <th>Distribution</th>
+                <th>Probability Function</th>
+                <th>Mean</th>
+                <th>Variance</th>
+                <th>mgf</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Binomial
+                    <br>p=succ prob
+                    <br>n=# trials
+                </td>
+                <td>$$p(y) = {n\choose y}p^k (1-p)^{n-y}$$
+                    $$\text{for y=0,1,...,n}$$
+                </td>
+                <td>$$np$$</td>
+                <td>$$np(1-p)$$</td>
+                <td>$$[pe^t + (1-p)]^n$$</td>
+            </tr>
+            <tr>
+                <td>Geometric
+                    <br>p=succ prob
+                </td>
+                <td>$$p(y) = p(1-p)^{y-1}$$ $$\text{for y=1,2,...}$$</td>
+                <td>$$\frac 1p$$</td>
+                <td>$$\frac{1-p}{p^2}$$</td>
+                <td>$$\frac{pe^t}{1-(1-p)e^t}$$</td>
+            </tr>
+            <tr>
+                <td>Geometric
+                    <br>first succ
+                    <br>p=succ prob
+                </td>
+                <td>$$p(y) = p(1-p)^{y-1}$$ $$\text{for y=1,2,...}$$</td>
+                <td>$$\frac 1p$$</td>
+                <td>$$\frac{1-p}{p^2}$$</td>
+                <td>$$\frac{pe^t}{1-(1-p)e^t}$$</td>
+            </tr>
+            <tr>
+                <td>Negative Binom
+                    <br># trials first r succ
+                    <br>r=#successes
+                    <br>p=succ prob
+                </td>
+                <td>$$p(y) = \binom{y-1}{r-1} p^r (1-p)^{y-r}$$
+                    $$y \in [r,\infty)$$
+                </td>
+                <td>$$r \over p$$</td>
+                <td>$$\frac{r(1-p)}{p^2}$$</td>
+                <td>$$[\frac{pe^t}{1-(1-p)e^t}]^r$$</td>
+            </tr>
+            <tr>
+                <td>Hypergeometric
+                    <br>y succ
+                    <br>sample without replacement
+                    <br>N=pop size
+                    <br>r=#succ in pop
+                    <br>n=# trials
+                </td>
+                <td>$$p(y) = \frac{\binom{r}{y}
+                    \binom{N-r}{n-y}}{\binom{N}{n}}$$
+                    $$\text{y=0,...,n if} n \leq r$$
+                    $$\text{y=0,...,r if} n \gt r$$
+                </td>
+                <td>$$\frac{nr}{N}$$</td>
+                <td>$$n (\frac rN) (\frac{N-r}{N}) (\frac{N-n}{N-1}) $$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Poisson
+                </td>
+                <td>$$p(y) = \frac{\lambda^y e^{-\lambda}}{y!}$$
+                    $$y=0,1,2,...$$
+                </td>
+                <td>$$\lambda$$</td>
+                <td>$$\lambda$$</td>
+                <td>$$exp[\lambda (e^t -1)]$$</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="conversions" style="display:none">
+        <h5>Conversions</h5>
+        <table border="1" class="dataframe">
+            <tbody>
+            <tr>
+                <td>Length</td>
+                <td>
+                    <p class="table-text">
+                        1 inch (in) = 2.54 cm &emsp;
+                        1 cm = 0.3937 in <br>
+                        1 mile (mi) = 1.609 km &nbsp; &nbsp;
+                        1 kilometer = 0.6214 mile <br>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Area</td>
+                <td>
+                    <p class="table-text">
+                        1 square mile = 640 acres <br>
+                        1 acre = 43,560 ft<sup>2</sup>
+                        1 liter (L) = 1000cm<sup>3</sup> = 1.057 quart (qt) =
+                        61.02 in<sup>3</sup> = 0.03532 ft<sup>3</sup>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Volume</td>
+                <td>
+                    <p class="table-text">
+                        1 liter (L) = 1000 cm3 = 1.057 quart (qt) = 61.02
+                        in<sup>3</sup> =
+                        0.03532 ft<sup>3</sup> <br>
+                        1 U.S. gallon (gal) = 3.785 L <br>
+                        1 cup = 8 fl oz <br>
+                        1 gallon = 4 quarts = 8 pints = 16 cups
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Mass</td>
+                <td>
+                    <p class="table-text">
+                        1 kilogram (kg) = 2.2046 pounds (lb)
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} World {% endblock %}
+
+{% block content %}
+<br>
+
+<h2>World knowledge</h2>
+<p>A cheat sheet for facts about where you live.</p>
+
+<div id="inner">
+    {% for line in texts %}
+    <p id="text">{{line}}</p>
+    {% endfor %}
+
+    <br>
+    {% for i in range(tables|length) %}
+        <h5>{{titles[i]}}</h5>
+        {{tables[i] | safe}}
+    {% endfor %}
+</div>
+
+
+{% endblock %}
