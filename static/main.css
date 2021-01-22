@@ -38,5 +38,87 @@ table.dataframe, .dataframe th, .dataframe td {
 }
 
 #inner {
-  padding-left: 5%;
+  padding-left: 1%;
+}
+
+table code {
+  font-size: 12px;
+  padding: 3px;
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+table th {
+  font-weight: bold;
+  border-radius: 2px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  background-image: -moz-linear-gradient(top,#fff,#f2f2f2);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top,#fff,#f2f2f2);
+  background-image: -o-linear-gradient(top,#fff,#f2f2f2);
+  background-image: linear-gradient(to bottom,#fff,#f2f2f2);
+  background-repeat: repeat-x;
+  font-weight: normal;
+  text-align: left;
+}
+
+table tr td {
+  white-space: nowrap;
+}
+
+table tr td:first-child {
+  text-align: left;
+}
+
+#legend tr td:first-child {
+  text-align: center;
+}
+
+.gray {
+  border: 1px solid #adadad;
+  color: black;
+  background-color: #e3e3e3;
+}
+
+.green {
+  border: 1px solid #286500;
+  color: black;
+  background-color: #53d000;
+}
+
+.yellow-green {
+  border: 1px solid #286500;
+  color: black;
+  background-color: #C8EA00;
+}
+
+.yellow {
+  border: 1px solid #6f6e00;
+  color: black;
+  background-color: yellow;
+}
+
+.orange {
+  border: 1px solid #b20000;
+  color: black;
+  background-color: #FFC543;
+}
+
+.red {
+  border: 1px solid #b20000;
+  color: black;
+  background-color: #ff8989;
+}
+
+#si-units tr:nth-child(0) {
+    width: 10%;
+}
+#si-units tr:nth-child(1) {
+    width: 10%;
+}
+#si-units tr:nth-child(2) {
+    width: 1%;
 }

@@ -6,13 +6,21 @@ function update5(event, tables) {
 
 function updateMathPage(event) {
     val = document.getElementById("math_select").value;
+    big_o = document.getElementById("big_o");
     stats = document.getElementById("stats");
-    conversions = document.getElementById("conversions");
-    if (val == "stats") {
-        stats.style.display = ""
-        conversions.style.display = "none"
-    } else if (val == "conversions") {
-        stats.style.display = "none"
-        conversions.style.display = ""
+    units = document.getElementById("units");
+    console.log(val);
+    if (val == "big_o") {
+        big_o.style.display = "";
+        stats.style.display = "none";
+        units.style.display = "none";
+    } else if (val == "stats") {
+        big_o.style.display = "none";
+        stats.style.display = "";
+        units.style.display = "none";
+    } else if (val == "units") {
+        big_o.style.display = "none";
+        stats.style.display = "none";
+        units.style.display = "";
     }
 }

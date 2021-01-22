@@ -1,5 +1,11 @@
 {% extends "base.html" %}
-{% block title %} Basic {% endblock %}
+{% block title %} - Home{% endblock %}
+
+{% block scripts %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+{% endblock %}
 
 {% block content %}
 <br>
@@ -7,9 +13,766 @@
     <h2>Craam</h2>
     Cram quickly with this collection of basic knowledge. A wikipedia
     cheat sheet.<br>
-    When navigating to different pages, please be patient as info is
-    scraped and loaded from the web.
+    When navigating to other pages, please be patient as info is
+    scraped and loaded from the web. <br>
+    Below are constants - formulas, equations, time complexities,
+    units, conversions.
 </div>
 
+<br><br>
+<div id="inner">
+    <h4>Math</h4>
+    <select class="form-select" aria-label="Math" style="width:50%"
+            onchange="updateMathPage()" id="math_select">
+        <option class="dropdown-item" value="big_o" selected>Big-O</option>
+        <option class="dropdown-item" value="stats">Stats Formulas</option>
+        <option class="dropdown-item" value="units">Units and
+            Conversions
+        </option>
+    </select>
+    <br>
+    <div id="big_o" style="display:">
+        <a target="_blank"
+           href="https://www.bigocheatsheet.com/">Comprehensive Big O Cheat
+            Sheet
+        </a><br><br>
+        <h5>Data structure operations</h5>
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <th>Data Structure</th>
+                <th colspan="8">Time Complexity</th>
+                <th>Space Complexity</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th colspan="4">Average</th>
+                <th colspan="4">Worst</th>
+                <th>Worst</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Access</th>
+                <th>Search</th>
+                <th>Insertion</th>
+                <th>Deletion</th>
+                <th>Access</th>
+                <th>Search</th>
+                <th>Insertion</th>
+                <th>Deletion</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>
+                    <a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Array_data_structure">Array</a>
+                    <br>sequential search <br>(unordered)
+                </td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td>
+                    binary search <br> (sorted)
+                </td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a>
+                </td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)">Queue</a>
+                </td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked
+                        List</a></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked
+                    List</a></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="yellow">Θ(n)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="green">O(1)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Skip_list">Skip
+                    List</a></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="orange">O(n log(n))</code></td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Hash_table">Hash
+                    Table</a>
+                </td>
+                <td><code class="gray">N/A</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="green">Θ(1)</code></td>
+                <td><code class="gray">N/A</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary
+                    Search Tree</a></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                       href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black
+                    Tree</a><br>use if many ins/del</td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td><a target="_blank"
+                       href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree</a>
+                    <br>more balanced
+                </td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">Θ(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br><h5>Array sorting algorithms</h5>
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <th>Algorithm</th>
+                <th colspan="3">Time Complexity</th>
+                <th>Space Complexity</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Best</th>
+                <th>Average</th>
+                <th>Worst</th>
+                <th>Worst</th>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="http://en.wikipedia.org/wiki/Quicksort">Quicksort</a>
+                </td>
+                <td><code class="orange">Ω(n log(n))</code></td>
+                <td><code class="orange">Θ(n log(n))</code></td>
+                <td><code class="red">O(n^2)</code></td>
+                <td><code class="yellow-green">O(log(n))</code></td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="http://en.wikipedia.org/wiki/Merge_sort">Mergesort</a>
+                </td>
+                <td><code class="orange">Ω(n log(n))</code></td>
+                <td><code class="orange">Θ(n log(n))</code></td>
+                <td><code class="orange">O(n log(n))</code></td>
+                <td><code class="yellow">O(n)</code></td>
+            </tr>
+            <tr>
+                <td><a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble
+                    Sort</a></td>
+                <td><code class="yellow">Ω(n)</code></td>
+                <td><code class="red">Θ(n^2)</code></td>
+                <td><code class="red">O(n^2)</code></td>
+                <td><code class="green">O(1)</code></td>
+            </tr>
+            <tr>
+                <td><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion
+                    Sort</a></td>
+                <td><code class="yellow">Ω(n)</code></td>
+                <td><code class="red">Θ(n^2)</code></td>
+                <td><code class="red">O(n^2)</code></td>
+                <td><code class="green">O(1)</code></td>
+            </tr>
+            <tr>
+                <td><a href="http://en.wikipedia.org/wiki/Selection_sort">Selection
+                    Sort</a></td>
+                <td><code class="red">Ω(n^2)</code></td>
+                <td><code class="red">Θ(n^2)</code></td>
+                <td><code class="red">O(n^2)</code></td>
+                <td><code class="green">O(1)</code></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <div id="sorting">
+        <h6>Quicksort</h6>
+        <ul>
+            <li>A comparison based sorting algorithm
+                <ul>
+                    <li>Divides entire dataset in half by selecting the middle
+                        element and putting all smaller elements to the left of
+                        the element and larger ones to the right.
+                    </li>
+                    <li>It repeats this process on the left side until it is
+                        comparing only two elements at which point the left side
+                        is sorted.
+                    </li>
+                    <li>When the left side is finished sorting it performs the
+                        same operation on the right side.
+                    </li>
+                </ul>
+            </li>
+            <li>Computer architecture favors the quicksort process.</li>
+            <li>Halves the data set by the average continuously until all the
+                information is sorted.
+            </li>
+        </ul>
+
+        <h6>Mergesort</h6>
+        <ul>
+            <li>A comparison based sorting algorithm
+                <ul>
+                    <li>Divides entire dataset into groups of at most two.</li>
+                    <li>Compares each number one at a time, moving the smallest
+                        number to left of the pair.
+                    </li>
+                    <li>Once all pairs sorted it then compares left most
+                        elements of the two leftmost pairs creating a sorted
+                        group of four with the smallest numbers on the left and
+                        the largest ones on the right.
+                    </li>
+                    <li>This process is repeated until there is only one set.
+                    </li>
+                </ul>
+            </li>
+            <li>Divides all the data into as small possible sets then
+                compares them.
+            </li>
+            <li>Likely faster than merge sort in practice</li>
+        </ul>
+
+        <h6>Bubble sort</h6>
+        <ul>
+            <li>A comparison based sorting algorithm
+                <ul>
+                    <li>It iterates left to right comparing every couplet,
+                        moving the
+                        smaller element to the left.
+                    </li>
+                    <li>It repeats this process until it no longer moves an
+                        element to
+                        the left.
+                    </li>
+                </ul>
+            </li>
+            <li>Moves one space to the right comparing two elements at a time
+                and moving
+                the smaller on to left.
+            </li>
+        </ul>
+        </div>
+        <br>
+    </div>
+
+    <div id="stats" style="display:none">
+        <h6>Continuous Distributions</h6>
+        <table border="1" class="dataframe">
+            <thead>
+            <tr style="table-text-align: right;">
+                <th>Distribution</th>
+                <th>Probability Function</th>
+                <th>Mean</th>
+                <th>Variance</th>
+                <th>mgf</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Uniform</td>
+                <td>$$f(y) = \frac{1}{b-a} \text{ for $y\in[a,b]$}\\$$</td>
+                <td>$$\frac{a+b}{2}$$</td>
+                <td>$$\frac{(b-a)^2}{2}$$</td>
+                <td>$$\frac{e^{tb} - e^{ta}}{t(b-a)}$$</td>
+            </tr>
+            <tr>
+                <td>Normal</td>
+                <td>$$f(y) = \text{ for $y\in(-\infty,\infty)$}\\$$</td>
+                <td>$$\mu$$</td>
+                <td>$$\sigma^2$$</td>
+                <td>$$ $$</td>
+            </tr>
+            <tr>
+                <td>Exponential<br>$$(\alpha=1)$$</td>
+                <td>$$f(y) = \frac{1}{\beta}e^{-\frac{y}{\beta}}\text{ for
+                    $\beta \gt 0$, $y\in(0,\infty)$}\\$$
+                </td>
+                <td>$$\beta$$</td>
+                <td>$$\beta^2$$</td>
+                <td>$$(1-\beta t)^{-1}$$</td>
+            </tr>
+            <tr>
+                <td>Gamma</td>
+                <td>$$f(y) = \text{ for $y\in(0,\infty)$}\\$$</td>
+                <td>$$\alpha\beta$$</td>
+                <td>$$\alpha\beta^2$$</td>
+                <td>$$(1-\beta t)^{-\alpha}$$</td>
+            </tr>
+            <tr>
+                <td>Chi-Sq</td>
+                <td>$$f(y) = \text{ for $y^2 \gt 0$}\\$$</td>
+                <td>$$\nu$$</td>
+                <td>$$2\nu$$</td>
+                <td>$$(1-2t)^{-\nu/2}$$</td>
+            </tr>
+            <tr>
+                <td>Beta</td>
+                <td>$$f(y) = \text{ for $y^2 \gt 0$}\\$$</td>
+                <td>$$\frac{\alpha}{\alpha+\beta}$$</td>
+                <td>$$\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$$
+                </td>
+                <td>DNE in closed form</td>
+            </tr>
+            </tbody>
+        </table>
+        <h6>Discrete Distributions</h6>
+        <table border="1" class="dataframe">
+            <thead>
+            <tr style="table-text-align: right;">
+                <th>Distribution</th>
+                <th>Probability Function</th>
+                <th>Mean</th>
+                <th>Variance</th>
+                <th>mgf</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Binomial
+                    <br>p=succ prob
+                    <br>n=# trials
+                </td>
+                <td>$$p(y) = {n\choose y}p^k (1-p)^{n-y}$$
+                    $$\text{for y=0,1,...,n}$$
+                </td>
+                <td>$$np$$</td>
+                <td>$$np(1-p)$$</td>
+                <td>$$[pe^t + (1-p)]^n$$</td>
+            </tr>
+            <tr>
+                <td>Geometric
+                    <br>p=succ prob
+                </td>
+                <td>$$p(y) = p(1-p)^{y-1}$$ $$\text{for y=1,2,...}$$</td>
+                <td>$$\frac 1p$$</td>
+                <td>$$\frac{1-p}{p^2}$$</td>
+                <td>$$\frac{pe^t}{1-(1-p)e^t}$$</td>
+            </tr>
+            <tr>
+                <td>Geometric
+                    <br>first succ
+                    <br>p=succ prob
+                </td>
+                <td>$$p(y) = p(1-p)^{y-1}$$ $$\text{for y=1,2,...}$$</td>
+                <td>$$\frac 1p$$</td>
+                <td>$$\frac{1-p}{p^2}$$</td>
+                <td>$$\frac{pe^t}{1-(1-p)e^t}$$</td>
+            </tr>
+            <tr>
+                <td>Negative Binom
+                    <br># trials first r succ
+                    <br>r=#successes
+                    <br>p=succ prob
+                </td>
+                <td>$$p(y) = \binom{y-1}{r-1} p^r (1-p)^{y-r}$$
+                    $$y \in [r,\infty)$$
+                </td>
+                <td>$$r \over p$$</td>
+                <td>$$\frac{r(1-p)}{p^2}$$</td>
+                <td>$$[\frac{pe^t}{1-(1-p)e^t}]^r$$</td>
+            </tr>
+            <tr>
+                <td>Hypergeometric
+                    <br>y succ
+                    <br>sample without replacement
+                    <br>N=pop size
+                    <br>r=#succ in pop
+                    <br>n=# trials
+                </td>
+                <td>$$p(y) = \frac{\binom{r}{y}
+                    \binom{N-r}{n-y}}{\binom{N}{n}}$$
+                    $$\text{y=0,...,n if} n \leq r$$
+                    $$\text{y=0,...,r if} n \gt r$$
+                </td>
+                <td>$$\frac{nr}{N}$$</td>
+                <td>$$n (\frac rN) (\frac{N-r}{N}) (\frac{N-n}{N-1}) $$</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Poisson
+                </td>
+                <td>$$p(y) = \frac{\lambda^y e^{-\lambda}}{y!}$$
+                    $$y=0,1,2,...$$
+                </td>
+                <td>$$\lambda$$</td>
+                <td>$$\lambda$$</td>
+                <td>$$exp[\lambda (e^t -1)]$$</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="units" style="display:none">
+        <h5>Units and Conversions</h5>
+
+        <table border="0">
+            <tbody>
+            <tr>
+                <td colspan="3" align="center"><font
+                        face="Myriad Roman,Syntax,Arial,Helvetica" size="4"
+                        color="#006633"><b>
+                    <hr noshade="" size="2">
+                    International System of Units (SI) base units</b>
+                    <hr>
+                </font></td>
+            </tr>
+            <tr valign="top">
+                <td>
+                    <table border="0" class="dataframe">
+                        <tbody>
+                        </tbody>
+                        <thead>
+                        <tr align="left" valign="bottom">
+                            <th>Base quantity</th>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr bgcolor="#d0f0c8">
+                            <td>length</td>
+                            <td>meter</td>
+                            <td>m</td>
+                        </tr>
+                        <tr>
+                            <td>mass</td>
+                            <td>kilogram&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>kg</td>
+                        </tr>
+                        <tr bgcolor="#d0f0c8">
+                            <td>time</td>
+                            <td>second</td>
+                            <td>s</td>
+                        </tr>
+                        <tr>
+                            <td>electric current</td>
+                            <td>ampere</td>
+                            <td>A</td>
+                        </tr>
+                        <tr bgcolor="#d0f0c8">
+                            <td>thermodynamic temperature&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td>kelvin</td>
+                            <td>K</td>
+                        </tr>
+                        <tr>
+                            <td>amount of substance</td>
+                            <td>mole</td>
+                            <td>mol</td>
+                        </tr>
+                        <tr bgcolor="#d0f0c8">
+                            <td>luminous intensity</td>
+                            <td>candela</td>
+                            <td>cd</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div id="si-units">
+            <table border="0">
+                <tbody>
+                <tr>
+                    <td colspan="3" align="center"><font
+                            face="Myriad Roman,Syntax,Arial,Helvetica" size="4"
+                            color="#006633"><b>
+                        SI Derived Units</b>
+                        <hr>
+                    </font></td>
+                </tr>
+                <tr valign="top">
+                    <td>
+                        <table border="0" class="dataframe">
+                            <thead>
+                            <tr valign="bottom" align="left">
+                                <th>Derived quantity</th>
+                                <th>Name</th>
+                                <th>Symbol&nbsp;&nbsp;</th>
+                                <th>Expression&nbsp;&nbsp;<br>in terms of&nbsp;&nbsp;<br>other
+                                    SI units
+                                </th>
+                                <th>Expression<br>in terms of<br>SI base units
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr bgcolor="#d0f0c8">
+                                <td>plane angle</td>
+                                <td>radian <sup>(a)</sup></td>
+                                <td>rad</td>
+                                <td>&nbsp;&nbsp;-</td>
+                                <td>m·m<sup>-1 </sup>= 1 <sup>(b)</sup></td>
+                            </tr>
+                            <tr>
+                                <td>frequency</td>
+                                <td>hertz</td>
+                                <td>Hz</td>
+                                <td>&nbsp;&nbsp;-</td>
+                                <td>s<sup>-1</sup></td>
+                            </tr>
+                            <tr bgcolor="#d0f0c8">
+                                <td>force</td>
+                                <td>newton</td>
+                                <td>N</td>
+                                <td>&nbsp;&nbsp;-</td>
+                                <td>m·kg·s<sup>-2</sup></td>
+                            </tr>
+                            <tr>
+                                <td>pressure, stress</td>
+                                <td>pascal</td>
+                                <td>Pa</td>
+                                <td>N/m<sup>2</sup></td>
+                                <td nowrap="">m<sup>-1</sup>·kg·s<sup>-2</sup>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#d0f0c8">
+                                <td>energy, work, quantity of heat</td>
+                                <td>joule</td>
+                                <td>J</td>
+                                <td>N·m</td>
+                                <td>m<sup>2</sup>·kg·s<sup>-2</sup></td>
+                            </tr>
+                            <tr>
+                                <td>electric charge, quantity of electricity
+                                </td>
+                                <td>coulomb</td>
+                                <td>C</td>
+                                <td>&nbsp;&nbsp;-</td>
+                                <td>s·A</td>
+                            </tr>
+                            <tr bgcolor="#d0f0c8">
+                                <td>electric resistance</td>
+                                <td>ohm</td>
+                                <td>&Omega;</td>
+                                <td>V/A</td>
+                                <td nowrap="">
+                                    m<sup>2</sup>·kg·s<sup>-3</sup>·A<sup>-2</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>electric potential difference,<br>
+                                    electromotive force <br>
+                                    V = I(curr A) * R(res &Omega;)
+                                </td>
+                                <td>volt</td>
+                                <td>V</td>
+                                <td>W/A</td>
+                                <td nowrap="">
+                                    m<sup>2</sup>·kg·s<sup>-3</sup>·A<sup>-1</sup>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#d0f0c8">
+                                <td>power, radiant flux<br>
+                                    P = I * V = V^2/R
+                                </td>
+                                <td>watt</td>
+                                <td>W</td>
+                                <td>J/s</td>
+                                <td>m<sup>2</sup>·kg·s<sup>-3</sup></td>
+                            </tr>
+                            <tr>
+                                <td>capacitance</td>
+                                <td>farad</td>
+                                <td>F</td>
+                                <td>C/V</td>
+                                <td nowrap="">
+                                    m<sup>-2</sup>·kg<sup>-1</sup>·s<sup>4</sup>·A<sup>2</sup>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#d0f0c8">
+                                <td>electric conductance</td>
+                                <td>siemens</td>
+                                <td>S</td>
+                                <td>A/V</td>
+                                <td>
+                                    m<sup>-2</sup>·kg<sup>-1</sup>·s<sup>3</sup>·A<sup>2</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>magnetic flux</td>
+                                <td>weber</td>
+                                <td>Wb</td>
+                                <td>V·s</td>
+                                <td>
+                                    m<sup>2</sup>·kg·s<sup>-2</sup>·A<sup>-1</sup>
+                                </td>
+                            </tr>
+                            <tr bgcolor="#d0f0c8">
+                                <td>magnetic flux density</td>
+                                <td>tesla</td>
+                                <td>T</td>
+                                <td>Wb/m<sup>2</sup></td>
+                                <td>kg·s<sup>-2</sup>·A<sup>-1</sup></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="conversions">
+            <h5>Conversions</h5>
+            <table border="1" class="dataframe">
+                <tbody>
+                <tr>
+                    <td>Length</td>
+                    <td>
+                        <p class="table-text">
+                            1 inch (in) = 2.54 cm &emsp;
+                            1 cm = 0.3937 in <br>
+                            1 mile (mi) = 1.609 km &nbsp; &nbsp;
+                            1 km = 0.6214 mi <br>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Area</td>
+                    <td>
+                        <p class="table-text">
+                            1 square mile = 640 acres <br>
+                            1 acre = 43,560 ft<sup>2</sup>
+                            1 liter (L) = 1000cm<sup>3</sup> = 1.057 quart (qt)
+                            =
+                            61.02 in<sup>3</sup> = 0.03532 ft<sup>3</sup>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Volume</td>
+                    <td>
+                        <p class="table-text">
+                            1 liter (L) = 1000 cm3 = 1.057 quart (qt) = 61.02
+                            in<sup>3</sup> =
+                            0.03532 ft<sup>3</sup> <br>
+                            1 U.S. gallon (gal) = 3.785 L <br>
+                            1 cup = 8 fl oz <br>
+                            1 gallon = 4 quarts = 8 pints = 16 cups
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mass</td>
+                    <td>
+                        <p class="table-text">
+                            1 kilogram (kg) = 2.2046 pounds (lb)
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
 
 {% endblock %}
